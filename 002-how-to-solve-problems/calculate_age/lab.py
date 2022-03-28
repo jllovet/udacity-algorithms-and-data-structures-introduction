@@ -37,8 +37,6 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
        and year2/month2/day2. Assumes inputs are valid dates
        in Gregorian calendar."""
     # program defensively! Add an assertion if the input is not valid!
-    assert year1 < year2
-    assert year1 <= year2 and month1 < month2
     assert year1 <= year2 and month1 <= month2 and day1 <= day2
 
     days = 0
@@ -48,11 +46,16 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     return days
 
 def test():
-    test_cases = [((2012,9,30,2012,10,30),30), 
-                  ((2012,1,1,2013,1,1),360),
-                  ((2012,9,1,2012,9,4),3),
-                  ((2013,1,1,1999,12,31), "AssertionError")]
-    
+    test_cases = [
+        ((2012, 9, 30, 2012, 10, 30), 30),
+        ((2012, 1, 1, 2013, 1, 1), 360),
+        ((2012, 9, 1, 2012, 9, 4), 3),
+        ((2012, 9, 30, 2012, 10, 30), 30),
+        ((2012, 1, 1, 2013, 1, 1), 360),
+        ((1991, 3, 1, 1991, 4, 1), 30),
+        ((2013, 1, 1, 1999, 12, 31), "AssertionError")
+    ]
+
     for (args, answer) in test_cases:
         try:
             result = daysBetweenDates(*args)
