@@ -157,6 +157,11 @@ def get_area_codes_called_from_bangalore(calls_summary):
         print(n)
 
 def get_percentage_of_calls_within_bangalore(calls_summary):
+    """Satisfies requirements of Part B
+
+    Runtime complexity = O(n) to execute the method get_history_of_numbers_called_in_area_code.
+    Otherwise, the operations can all be executed in O(1).
+    """
     area_code = "(080)"
     b = calls_summary.get(area_code)
     num_calls_in_same_area_code = len(b.get_history_of_numbers_called_in_area_code(area_code))
