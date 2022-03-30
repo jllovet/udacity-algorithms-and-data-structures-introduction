@@ -138,6 +138,13 @@ def aggregate_call_logs_by_area_code():
 
 
 def get_area_codes_called_from_bangalore(calls_summary):
+    """Satisfies requirements of Part A
+
+    Runtime complexity = O(n log n) + O(n) to use the built-in sorted method and
+    iterate over the list of area codes to print them, where n is the number of
+    elements in the set codes_called, which contains the area codes that have been
+    called from Bangalore in this case.
+    """
     codes = calls_summary.get("(080)").codes_called
     print("The numbers called by people in Bangalore have codes:")
     for n in sorted(codes):
