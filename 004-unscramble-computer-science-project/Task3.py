@@ -171,7 +171,7 @@ def get_percentage_of_calls_within_bangalore(calls_summary):
 
 """
 Overall solution complexity is O(n) + O(m log m) + O(p), where n is the number of records
-In the original call logs, where m is the number of area codes called
+in the original call logs, where m is the number of area codes called
 from Bangalore, and where p is the number of calls made from the Bangalore area code.
 """
 calls_summary = aggregate_call_logs_by_area_code()
