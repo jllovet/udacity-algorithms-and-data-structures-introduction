@@ -110,7 +110,7 @@ def aggregate_call_logs_by_area_code():
 
     Runtime complexity = O(n), since the most expensive operation on average is
     the iteration over the list of call records. On average the dictionary
-    updates are in O(1) time, especially for a dictionary with only a few
+    updates are in θ(1) time, especially for a dictionary with only a few
     thousand elements. Using this structure makes the solution generalizable for
     metrics against other area codes.
     """
