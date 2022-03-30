@@ -169,6 +169,11 @@ def get_percentage_of_calls_within_bangalore(calls_summary):
     percentage = round(num_calls_in_same_area_code / num_all_calls_from_area_code * 100, 2)
     print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
+"""
+Overall solution complexity is O(n) + O(m log m) + O(p), where n is the number of records
+In the original call logs, where m is the number of area codes called
+from Bangalore, and where p is the number of calls made from the Bangalore area code.
+"""
 calls_summary = aggregate_call_logs_by_area_code()
 get_area_codes_called_from_bangalore(calls_summary)
 get_percentage_of_calls_within_bangalore(calls_summary)
