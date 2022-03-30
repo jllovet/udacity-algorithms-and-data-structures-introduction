@@ -50,13 +50,19 @@ The percentage should have 2 decimal digits
 # The call data (`call.csv`) has the following columns: calling telephone number (string), receiving telephone number (string), start timestamp of telephone call (string), duration of telephone call in seconds (string)
 
 def is_bangalore_number(n):
-    return n[:5] == "(080)"
+    if len(n) >= len("(080)"):
+        return n[:5] == "(080)"
+    else:
+        return False
 
 def is_mobile_number(n):
-    return " " in n and n[0] in ["7", "8", "9"]
+    return " " in n and n[0] in ["7", "8", "9"] and len(n) >= 4
 
 def is_telemarketer_number(n):
-    return n[:3] == "140"
+    if len(n) >= len("140"):
+        return n[:3] == "140"
+    else:
+        return False
 
 def is_fixed_line_number(n):
     return "(" in n and ")" in n
