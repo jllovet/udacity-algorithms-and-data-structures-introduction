@@ -98,6 +98,12 @@ class AreaCode:
         from the area code
         
         Complexity = O(n), where n is the num of elements in self.called_number_history
+        Using this method is not the algorithmically optimal option, but having an
+        additional pass through this helper function allows the solution
+        to be more general than explicitly pre-computing the single solution for
+        Bangalore would be. However, that said, it only adds a single additional
+        pass that operates in O(n), which does not change the order of the runtime
+        complexity of the entire solution.
         """
         h = []
         for number in self.called_number_history:
@@ -153,12 +159,6 @@ def get_area_codes_called_from_bangalore(calls_summary):
 def get_percentage_of_calls_within_bangalore(calls_summary):
     area_code = "(080)"
     b = calls_summary.get(area_code)
-    # Using the following call is not the algorithmically optimal option, but
-    # having an additional pass through this helper function allows the solution
-    # to be more general than explicitly pre-computing the single solution for
-    # Bangalore would be. However, that said, it only adds a single additional
-    # pass that operates in O(n), which does not change the order of the runtime
-    # complexity of the entire solution
     num_calls_in_same_area_code = len(b.get_history_of_numbers_called_in_area_code(area_code))
     num_all_calls_from_area_code = len(b.called_number_history)
     percentage = round(num_calls_in_same_area_code / num_all_calls_from_area_code * 100, 2)
