@@ -47,7 +47,7 @@ def find_number_on_phone_longest():
     # Initialize to first calling number encountered
     number_on_phone_longest = calls[0][0]
 
-    # Finds solution in single pass over list. Linear time!
+    # Finds solution in single pass over list.
     for c in calls:
         # Handle calling telephone number
         number_on_phone_longest = process_record(c, 0, number_on_phone_longest)
