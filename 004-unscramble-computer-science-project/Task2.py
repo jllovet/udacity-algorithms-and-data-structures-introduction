@@ -85,6 +85,11 @@ and a running tally of the number that has spent the longest on the phone so far
 Since it keeps running score as it iterates over the list of calls, only a single
 pass is needed over the list, and it produces a solution in linear time.
 
+The quadratic time in the worst case comes from the worst-case time for dict
+lookups, but the hash function used by the dict would have to be very bad for
+this to be the case, making the solution effectively linear, presuming that
+the hash function is effective (which is a safe assumption here).
+
 A note on the implementation: to avoid having to allocate additional
 memory for the call_times dict in each of the helper functions, it is contained
 within the parent scope of those helper functions and is a semi-global variable,
