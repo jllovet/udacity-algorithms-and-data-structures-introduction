@@ -44,6 +44,22 @@ def find_number_on_phone_longest():
             call_times[record[phone_number_index]] += int(record[3]) # Add duration of call to entry for number
 
     def update_number_on_phone_longest(record, phone_number_index, number_on_phone_longest):
+        """Returns the number that has been on the phone the longest so far
+
+        Args:
+            record:
+                list of str for a line from the calls records
+            phone_number_index:
+                int for index of the number to be compared against the number currently listed as
+                having the greatest summed call times
+                0 for the calling number.
+                1 for the receiving number.
+            number_on_phone_longest:
+                str for current number listed with the greatest summed call times
+
+        Runtime complexity = O(n) in the worst case for dict lookups, with average time
+        of θ(1).
+        """
         # Compare to number listed as being on the longest and switch if needed
         if call_times[record[phone_number_index]] > call_times.get(number_on_phone_longest):
             number_on_phone_longest = record[phone_number_index]
