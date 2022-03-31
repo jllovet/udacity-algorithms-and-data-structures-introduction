@@ -24,18 +24,6 @@ September 2016.".
 # The text data (`text.csv`) has the following columns: sending telephone number (string), receiving telephone number (string), timestamp of text message (string).
 # The call data (`call.csv`) has the following columns: calling telephone number (string), receiving telephone number (string), start timestamp of telephone call (string), duration of telephone call in seconds (string)
 
-# This approach keeps a dictionary of running totals of call times per number
-# and a running tally of the number that has spent the longest on the phone so far.
-# Since it keeps running score as it iteratesover the list of calls, only a single
-# pass is needed over the list, and it produces a solution in linear time.
-
-# A note on the implementation: to avoid having to allocate additional
-# memory for the call_times dict in each of the helper functions, it is contained
-# within the parent scope of those helper functions and is a semi-global variable,
-# with the caveat that it is still only available within the scope of the function
-# find_number_on_phone_longest. For this to work, the helper functions are defined
-# and executed in the scope of find_number_on_phone_longest.
-
 def find_number_on_phone_longest():
 
     call_times = dict()
@@ -67,5 +55,21 @@ def find_number_on_phone_longest():
         number_on_phone_longest = process_record(c, 1, number_on_phone_longest)
 
     print(f"{number_on_phone_longest} spent the longest time, {call_times.get(number_on_phone_longest)} seconds, on the phone during September 2016.")
+
+
+"""
+Algorithmic complexity = O(n)
+This approach keeps a dictionary of running totals of call times per number
+and a running tally of the number that has spent the longest on the phone so far.
+Since it keeps running score as it iterates over the list of calls, only a single
+pass is needed over the list, and it produces a solution in linear time.
+
+A note on the implementation: to avoid having to allocate additional
+memory for the call_times dict in each of the helper functions, it is contained
+within the parent scope of those helper functions and is a semi-global variable,
+with the caveat that it is still only available within the scope of the function
+find_number_on_phone_longest. For this to work, the helper functions are defined
+and executed in the scope of find_number_on_phone_longest.
+"""
 
 find_number_on_phone_longest()
