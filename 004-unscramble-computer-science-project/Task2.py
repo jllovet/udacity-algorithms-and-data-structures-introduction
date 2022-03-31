@@ -33,6 +33,11 @@ def find_number_on_phone_longest():
         return update_number_on_phone_longest(record, phone_number_index, number_on_phone_longest)
 
     def update_call_times_subtotal(record, phone_number_index):
+        """Updates the running total call time for a number in the call_times dictionary
+
+        Runtime complexity = O(n) in the worst case for dict lookups and modifications,
+        with average time of θ(1).
+        """
         if call_times.get(record[phone_number_index]) is None:
             call_times[record[phone_number_index]] = int(record[3]) # Add number to dict if not present with duration of call
         else:
