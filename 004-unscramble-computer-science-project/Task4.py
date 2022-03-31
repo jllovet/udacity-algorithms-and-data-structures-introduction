@@ -29,3 +29,52 @@ The list of numbers should be print out one per line in lexicographic order with
 # The text data (`text.csv`) has the following columns: sending telephone number (string), receiving telephone number (string), timestamp of text message (string).
 # The call data (`call.csv`) has the following columns: calling telephone number (string), receiving telephone number (string), start timestamp of telephone call (string), duration of telephone call in seconds (string)
 
+def get_set_of_numbers_in_text_records():
+    """Returns a set of the phone numbers in text records
+
+    Runtime complexity = O(n) to iterate over the list of text records,
+    since adding items to the accumulator set is O(1) for each item and can
+    thus be disregarded.
+    """
+    texters = set()
+    for t in texts:
+        texters.add(t[0]) # add number that sent text
+        texters.add(t[1]) # add number that received text
+    return texters
+
+def identify_telemarketers():
+    """Returns a sorted list of possible telemarketers from text and call records
+    
+    Runtime complexity = O(n log n) to sort the list of possible telemarketers.
+    The single pass through the texts and calls records each take O(n). The set
+    manipulation (e in set, add e to set) that the implemenation uses each take
+    O(1). Since these are an order lower than O(n log n) in the context of
+    approximations of runtime complexity, they can be subsumed under time O(n log n)
+    """
+    texters = get_set_of_numbers_in_text_records()
+    numbers_called = set()
+    possible_telemarketers = set()
+    for c in calls:
+        numbers_called.add(c[1])
+        # check for any activity suggesting number is not telemarketer
+        if c[0] not in texters and c[0] not in numbers_called:
+            possible_telemarketers.add(c[0])
+    return sorted(possible_telemarketers)
+
+
+"""
+Runtime complexity = O(n log n) to sort the list of possible telemarketers.
+The single pass through the texts and calls records each take O(n). The set
+manipulation (e in set, add e to set) that the implemenation uses each take
+O(1). Since these are an order lower than O(n log n) in the context of
+approximations of runtime complexity, they can be subsumed under the time
+O(n log n). The pass through the sorted list to print them takes O(n), but
+for the entire solution this does not change the runtime complexity, in
+light of the considerations above.
+"""
+possible_telemarketers = identify_telemarketers()
+
+print("These numbers could be telemarketers: ")
+
+for t in possible_telemarketers:
+    print(t)
