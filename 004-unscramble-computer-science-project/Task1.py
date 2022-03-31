@@ -24,15 +24,20 @@ Print a message:
 # The call data (`call.csv`) has the following columns: calling telephone number (string), receiving telephone number (string), start timestamp of telephone call (string), duration of telephone call in seconds (string)
 
 """
-Algorithmic complexity = O(n^2)
+Algorithmic complexity = O(n^2), with average performance of θ(n)
 
-This implementation iterates over each of the lists one time and adds each new
+This solution iterates over each of the lists one time and adds each new
 phone number to the set of numbers as it proceeds. Because the python built-in
 set has average-case retrieval of elements of θ(1) and worst-case retrieval and
 addition of elements of O(n), as we iterate over the lists of texts and calls,
 getting the unique set of numbers can be done on average in O((t+c)^2), where t
 is the number of text records and c is the number of call records. This reduces
-to O(n^2) for worst-case performance, with average performance being θ(n).
+to O(n^2) for worst-case performance, with average performance of θ(n).
+
+The quadratic time in the worst case comes from the worst-case time for dict
+lookups, but the hash function used by the dict would have to be very bad for
+this to be the case, making the solution effectively linear, presuming that
+the hash function is effective (which is a safe assumption here).
 """
 
 numbers = set()
