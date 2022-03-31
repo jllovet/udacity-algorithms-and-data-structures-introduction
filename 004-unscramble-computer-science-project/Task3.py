@@ -192,8 +192,13 @@ def get_area_codes_called_from_bangalore(calls_summary):
 def get_percentage_of_calls_within_bangalore(calls_summary):
     """Satisfies requirements of Part B
 
-    Runtime complexity = O(n) to execute the method get_history_of_numbers_called_in_area_code.
-    Otherwise, the operations can all be executed in O(1).
+    Algorithmic complexity = O(n) for worst case
+
+    It takes O(n) in the worst case to for a dict lookup, and it similarly takes
+    O(n) to execute the method get_history_of_numbers_called_in_area_code. However,
+    Since these lookups happen independently, they do not cause a change in the
+    order of the runtime to O(n^2). Otherwise, the operations can all be executed
+    in O(1).
     """
     area_code = "(080)"
     b = calls_summary.get(area_code)
