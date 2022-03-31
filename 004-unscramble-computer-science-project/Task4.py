@@ -57,8 +57,9 @@ def identify_telemarketers():
     for c in calls:
         numbers_called.add(c[1])
         # check for any activity suggesting number is not telemarketer
-        if c[0] not in texters and c[0] not in numbers_called:
+        if c[0] not in texters:
             possible_telemarketers.add(c[0])
+    possible_telemarketers = possible_telemarketers - numbers_called # set difference
     return sorted(possible_telemarketers)
 
 
