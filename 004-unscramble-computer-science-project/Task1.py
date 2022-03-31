@@ -26,14 +26,13 @@ Print a message:
 """
 Algorithmic complexity = O(n^2)
 
-This implementation iterates over each of the lists one time and
-adds each new phone number to the set of numbers as it proceeds.
-Because the python built-in set has average-case retrieval of elements
-of θ(1) and O(n) in the worst case, as we iterate over the lists of
-texts and calls, getting the unique set of numbers can be done on
-average in O((t+c)^2), where t is the number of text records and c is the
-number of call records. This reduces to O(n^2) for worst-case performance,
-with average performance being θ(n).
+This implementation iterates over each of the lists one time and adds each new
+phone number to the set of numbers as it proceeds. Because the python built-in
+set has average-case retrieval of elements of θ(1) and worst-case retrieval and
+addition of elements of O(n), as we iterate over the lists of texts and calls,
+getting the unique set of numbers can be done on average in O((t+c)^2), where t
+is the number of text records and c is the number of call records. This reduces
+to O(n^2) for worst-case performance, with average performance being θ(n).
 """
 
 numbers = set()
