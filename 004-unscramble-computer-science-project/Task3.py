@@ -50,24 +50,44 @@ The percentage should have 2 decimal digits
 # The call data (`call.csv`) has the following columns: calling telephone number (string), receiving telephone number (string), start timestamp of telephone call (string), duration of telephone call in seconds (string)
 
 def is_bangalore_number(n):
+    """Returns boolean indicating whether number is from Bangalore
+
+    Runtime complexity = O(1)
+    """
     if len(n) >= len("(080)"):
         return n[:5] == "(080)"
     else:
         return False
 
 def is_mobile_number(n):
+    """Returns boolean indicating whether the number is for a mobile phone
+
+    Runtime complexity = O(n), where n is the length of string n
+    """
     return " " in n and n[0] in ["7", "8", "9"] and len(n) >= 4
 
 def is_telemarketer_number(n):
+    """Returns boolean indicating whether number is from a telemarketer
+
+    Runtime complexity = O(1)
+    """
     if len(n) >= len("140"):
         return n[:3] == "140"
     else:
         return False
 
 def is_fixed_line_number(n):
+    """Returns boolean indicating whether number is from a fixed line
+
+    Runtime complexity = O(n), where n is the length of string n
+    """
     return "(" in n and ")" in n
 
 def get_area_code(n):
+    """Returns string for area code of phone number
+
+    Runtime complexity = O(n), where n is the length of string n
+    """
     if is_bangalore_number(n):
         return "(080)"
     if is_fixed_line_number(n):
@@ -170,9 +190,13 @@ def get_percentage_of_calls_within_bangalore(calls_summary):
     print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
 """
-Overall solution complexity is O(n) + O(m log m) + O(p), where n is the number of records
-in the original call logs, where m is the number of area codes called
-from Bangalore, and where p is the number of calls made from the Bangalore area code.
+Overall solution complexity is O(n) + O(m log m) + O(p), where n is the number
+of records in the original call logs, where m is the number of area codes
+called from Bangalore, and where p is the number of calls made from the
+Bangalore area code. However, since in the context of approximating runtime
+complexity O(n) is an order lower than O(n log n), the additional passes
+described can be subsumed under the time O(n log n) for the complexity of the
+entire solution.
 """
 calls_summary = aggregate_call_logs_by_area_code()
 get_area_codes_called_from_bangalore(calls_summary)
