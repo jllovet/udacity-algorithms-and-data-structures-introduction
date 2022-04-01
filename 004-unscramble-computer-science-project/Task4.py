@@ -70,15 +70,17 @@ def identify_telemarketers():
 
 
 """
-Runtime complexity = O(n log n)
-    
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n log n) for
+average case
+
 Sorting the list of possible telemarketers takes O(n log n) in the worst case.
 The single pass through the texts and calls records each take O(n). The basic
 set operations (e in set, add e to set) that the implementation uses each take
-O(n) in the worst case, with θ(1) or "amortized O(1)" in the average case. The
-set difference takes O(n) in the worst case. Consequently, since these are an
-order lower than O(n log n) in the context of approximations of runtime
-complexity, the runtime complexity reduces to O(n log n).
+O(n) in the worst case, with θ(1) in the average case. Since these occur nested
+inside a loop, in the worst case, this produces an amortized O(n^2). The set
+difference takes O(n) in the worst case. Consequently, since all of the other
+orders are lower than O(n^2) in the context of approximations of runtime
+complexity, the runtime complexity reduces to O(n^2).
 
 The pass through the sorted list to print them takes O(n), but for the entire
 solution this does not change the runtime complexity, in light of the
