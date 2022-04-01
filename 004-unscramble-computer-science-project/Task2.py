@@ -79,8 +79,7 @@ def find_number_on_phone_longest():
 
 
 """
-Algorithmic complexity = O(n^2) for worst case, with θ(n) or "amortized O(n)" 
-for average case
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n) for average case
 
 This approach keeps a dictionary of running totals of call times per number
 and a running tally of the number that has spent the longest on the phone so far.
