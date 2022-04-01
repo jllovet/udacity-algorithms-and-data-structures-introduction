@@ -134,7 +134,7 @@ class AreaCode:
 def aggregate_call_logs_by_area_code():
     """Returns a dict of AreaCode to summarize call log information
 
-    Algorithmic complexity = O(n^2) for worst case, with θ(n) or "amortized O(n)" 
+    Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n) 
     for average case
     
     Iterating over the list of calls has algorithmic complexity of O(n).
@@ -209,8 +209,8 @@ def get_percentage_of_calls_within_bangalore(calls_summary):
     print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
 """
-Algorithmic complexity = O(n^2) for worst case, with θ(n log n) or "amortized
-O(n log n)" for average case
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n log n)
+for average case
 
 The O(n^2) time in the worst case comes from the worst-case time for dict
 and set lookups and updates that are performed for each of the steps while
@@ -221,8 +221,8 @@ linear, presuming that the hash function is effective (which is a safe
 assumption here).
 
 The sorting performed after the initial work takes O(n log n) in the worst case.
-The consequent runtime complexity of O(n^2) + O(n log n) reduces to O(n^2) for
-the worst case, with θ(n log n) or "amortized O(n log n)" for average case.
+The consequent runtime complexity of O(n^2) + O(n log n) reduces to an amortized
+O(n^2) for the worst case, with θ(n log n) for average case.
 """
 calls_summary = aggregate_call_logs_by_area_code()
 get_area_codes_called_from_bangalore(calls_summary)
