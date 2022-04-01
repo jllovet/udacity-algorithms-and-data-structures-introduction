@@ -24,8 +24,7 @@ Print a message:
 # The call data (`call.csv`) has the following columns: calling telephone number (string), receiving telephone number (string), start timestamp of telephone call (string), duration of telephone call in seconds (string)
 
 """
-Algorithmic complexity = O(n^2) for worst case, with θ(n) or "amortized O(n)" 
-for average case
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n) for average case
 
 This solution iterates over each of the lists one time and adds each new
 phone number to the set of numbers as it proceeds. Because the python built-in
