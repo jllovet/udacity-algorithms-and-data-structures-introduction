@@ -143,7 +143,7 @@ def aggregate_call_logs_by_area_code():
     and set lookups and updates that are performed for each of the steps while
     iterating over the list of calls. However, the hash function used by the dict
     and set would have to be very bad for each of them to require O(n) time and
-    make the runtime O(n^4) for the entire function. The solution is effectively
+    make the runtime O(n^2) for the entire function. The solution is effectively
     linear, presuming that the hash function is effective (which is a safe
     assumption here).
 
