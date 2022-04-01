@@ -45,8 +45,8 @@ def get_set_of_numbers_in_text_records():
 def identify_telemarketers():
     """Returns a sorted list of possible telemarketers from text and call records
     
-    Algorithmic complexity = O(n^2) for worst case, with θ(n log n) or "amortized
-    O(n log n)" for average case
+    Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n log n) for
+    average case
     
     Sorting the list of possible telemarketers takes O(n log n) in the worst case.
     The single pass through the texts and calls records each take O(n). The basic
