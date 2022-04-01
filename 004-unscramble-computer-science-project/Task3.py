@@ -163,7 +163,7 @@ def aggregate_call_logs_by_area_code():
                 area_code=code_of_caller,
                 phone_numbers=set([calling_number]),
                 codes_called=set([code_of_receiver]),
-                called_number_history=list(receiving_number),
+                called_number_history=[receiving_number],
             )
         # Update the AreaCode record if it is already in the dictionary
         else:
