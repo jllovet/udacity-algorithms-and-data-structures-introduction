@@ -134,12 +134,12 @@ class AreaCode:
 def aggregate_call_logs_by_area_code():
     """Returns a dict of AreaCode to summarize call log information
 
-    Algorithmic complexity = O(n^4) for worst case, with θ(n) or "amortized O(n)" 
+    Algorithmic complexity = O(n^2) for worst case, with θ(n) or "amortized O(n)" 
     for average case
     
     Iterating over the list of calls has algorithmic complexity of O(n).
 
-    The O(n^4) time in the worst case comes from the worst-case time for dict
+    The O(n^2) time in the worst case comes from the worst-case time for dict
     and set lookups and updates that are performed for each of the steps while
     iterating over the list of calls. However, the hash function used by the dict
     and set would have to be very bad for each of them to require O(n) time and
