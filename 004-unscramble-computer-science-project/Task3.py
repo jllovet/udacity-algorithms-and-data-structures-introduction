@@ -202,9 +202,10 @@ def get_percentage_of_calls_within_bangalore(calls_summary):
     """
     area_code = "(080)"
     b = calls_summary.get(area_code)
-    num_calls_in_same_area_code = len(b.get_history_of_numbers_called_in_area_code(area_code))
     num_all_calls_from_area_code = len(b.called_number_history)
+    num_calls_in_same_area_code = len(b.get_history_of_numbers_called_in_area_code(area_code))
     percentage = round(num_calls_in_same_area_code / num_all_calls_from_area_code * 100, 2)
+
     print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
 """
