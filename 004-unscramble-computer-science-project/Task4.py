@@ -10,7 +10,7 @@ with open('texts.csv', 'r') as f:
 
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
-    calls = list(reader)[:93]
+    calls = list(reader)
 
 """
 TASK 4:
