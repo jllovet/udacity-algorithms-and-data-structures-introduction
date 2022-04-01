@@ -1,0 +1,82 @@
+Task 0
+=======
+Algorithmic complexity = O(1)
+
+Retrieving a specific element from an index of a list can be done in constant
+time. Performing this a constant number of times does not affect the order of
+the solutions algorithmic complexity.
+
+Task 1
+=======
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n) for average case
+
+This solution iterates over each of the lists one time and adds each new
+phone number to the set of numbers as it proceeds. Because the python built-in
+set has average-case retrieval of elements of θ(1) and worst-case retrieval and
+addition of elements of O(n), as we iterate over the lists of texts and calls,
+getting the unique set of numbers can be done on average in O((t+c)^2), where t
+is the number of text records and c is the number of call records. This reduces
+to O(n^2) for worst-case performance, with average performance of θ(n).
+
+The quadratic time in the worst case comes from the worst-case time for dict
+lookups, but the hash function used by the dict would have to be very bad for
+this to be the case, making the solution effectively linear, presuming that
+the hash function is effective (which is a safe assumption here).
+
+Task 2
+=======
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n) for average case
+
+This approach keeps a dictionary of running totals of call times per number
+and a running tally of the number that has spent the longest on the phone so far.
+Since it keeps running score as it iterates over the list of calls, only a single
+pass is needed over the list, and it produces a solution in linear time.
+
+The quadratic time in the worst case comes from the worst-case time for dict
+lookups, but the hash function used by the dict would have to be very bad for
+this to be the case, making the solution effectively linear, presuming that
+the hash function is effective (which is a safe assumption here).
+
+A note on the implementation: to avoid having to allocate additional
+memory for the call_times dict in each of the helper functions, it is contained
+within the parent scope of those helper functions and is a semi-global variable,
+with the caveat that it is still only available within the scope of the function
+find_number_on_phone_longest. For this to work, the helper functions are defined
+and executed in the scope of find_number_on_phone_longest.
+
+
+Task 3
+=======
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n log n)
+for average case
+
+The O(n^2) time in the worst case comes from the worst-case time for dict
+and set lookups and updates that are performed for each of the steps while
+iterating over the list of calls. However, the hash function used by the dict
+and set would have to be very bad for each of them to require O(n) time and
+make the runtime O(n^2) for the entire function. The solution is effectively
+linear, presuming that the hash function is effective (which is a safe
+assumption here).
+
+The sorting performed after the initial work takes O(n log n) in the worst case.
+The consequent runtime complexity of O(n^2) + O(n log n) reduces to an amortized
+O(n^2) for the worst case, with θ(n log n) for average case.
+
+
+Task 4
+=======
+Algorithmic complexity = Amortized O(n^2) for worst case, with θ(n log n) for
+average case
+
+Sorting the list of possible telemarketers takes O(n log n) in the worst case.
+The single pass through the texts and calls records each take O(n). The basic
+set operations (e in set, add e to set) that the implementation uses each take
+O(n) in the worst case, with θ(1) in the average case. Since these occur nested
+inside a loop, in the worst case, this produces an amortized O(n^2). The set
+difference takes O(n) in the worst case. Consequently, since all of the other
+orders are lower than O(n^2) in the context of approximations of runtime
+complexity, the runtime complexity reduces to O(n^2).
+
+The pass through the sorted list to print them takes O(n), but for the entire
+solution this does not change the runtime complexity, in light of the
+considerations above.
