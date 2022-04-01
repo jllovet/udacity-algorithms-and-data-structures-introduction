@@ -10,7 +10,7 @@ with open('texts.csv', 'r') as f:
 
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
-    calls = list(reader)
+    calls = list(reader)[:93]
 
 """
 TASK 4:
@@ -45,11 +45,15 @@ def get_set_of_numbers_in_text_records():
 def identify_telemarketers():
     """Returns a sorted list of possible telemarketers from text and call records
     
-    Runtime complexity = O(n log n) to sort the list of possible telemarketers.
-    The single pass through the texts and calls records each take O(n). The set
-    manipulation (e in set, add e to set) that the implemenation uses each take
-    O(1). Since these are an order lower than O(n log n) in the context of
-    approximations of runtime complexity, they can be subsumed under time O(n log n)
+    Runtime complexity = O(n log n)
+    
+    Sorting the list of possible telemarketers takes O(n log n) in the worst case.
+    The single pass through the texts and calls records each take O(n). The basic
+    set operations (e in set, add e to set) that the implementation uses each take
+    O(n) in the worst case, with θ(1) or "amortized O(1)" in the average case. The
+    set difference takes O(n) in the worst case. Consequently, since these are an
+    order lower than O(n log n) in the context of approximations of runtime
+    complexity, the runtime complexity reduces to O(n log n).
     """
     texters = get_set_of_numbers_in_text_records()
     numbers_called = set()
@@ -64,14 +68,19 @@ def identify_telemarketers():
 
 
 """
-Runtime complexity = O(n log n) to sort the list of possible telemarketers.
-The single pass through the texts and calls records each take O(n). The set
-manipulation (e in set, add e to set) that the implemenation uses each take
-O(1). Since these are an order lower than O(n log n) in the context of
-approximations of runtime complexity, they can be subsumed under the time
-O(n log n). The pass through the sorted list to print them takes O(n), but
-for the entire solution this does not change the runtime complexity, in
-light of the considerations above.
+Runtime complexity = O(n log n)
+    
+Sorting the list of possible telemarketers takes O(n log n) in the worst case.
+The single pass through the texts and calls records each take O(n). The basic
+set operations (e in set, add e to set) that the implementation uses each take
+O(n) in the worst case, with θ(1) or "amortized O(1)" in the average case. The
+set difference takes O(n) in the worst case. Consequently, since these are an
+order lower than O(n log n) in the context of approximations of runtime
+complexity, the runtime complexity reduces to O(n log n).
+
+The pass through the sorted list to print them takes O(n), but for the entire
+solution this does not change the runtime complexity, in light of the
+considerations above.
 """
 possible_telemarketers = identify_telemarketers()
 
