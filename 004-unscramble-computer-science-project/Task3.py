@@ -208,13 +208,20 @@ def get_percentage_of_calls_within_bangalore(calls_summary):
     print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
 """
-Overall solution complexity is O(n) + O(m log m) + O(p), where n is the number
-of records in the original call logs, where m is the number of area codes
-called from Bangalore, and where p is the number of calls made from the
-Bangalore area code. However, since in the context of approximating runtime
-complexity O(n) is an order lower than O(n log n), the additional passes
-described can be subsumed under the time O(n log n) for the complexity of the
-entire solution.
+Algorithmic complexity = O(n^2) for worst case, with θ(n log n) or "amortized
+O(n log n)" for average case
+
+The O(n^2) time in the worst case comes from the worst-case time for dict
+and set lookups and updates that are performed for each of the steps while
+iterating over the list of calls. However, the hash function used by the dict
+and set would have to be very bad for each of them to require O(n) time and
+make the runtime O(n^2) for the entire function. The solution is effectively
+linear, presuming that the hash function is effective (which is a safe
+assumption here).
+
+The sorting performed after the initial work takes O(n log n) in the worst case.
+The consequent runtime complexity of O(n^2) + O(n log n) reduces to O(n^2) for
+the worst case, with θ(n log n) or "amortized O(n log n)" for average case.
 """
 calls_summary = aggregate_call_logs_by_area_code()
 get_area_codes_called_from_bangalore(calls_summary)
